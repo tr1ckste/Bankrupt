@@ -30,7 +30,7 @@ const getData = async url => {
 };
 
 const submitButtonHandler = async (login, password) => {
-  const users = await getData('/users/getAll');
+  const users = await getData('/user/getAll');
   if (!(login && password)) {
     occupiedLoginWarning.style.display = 'none';
     emptyFieldWarning.style.display = 'inline';
@@ -41,6 +41,6 @@ submitButton.addEventListener('click', async () => {
   const login = loginForm.value;
   const password = passwordForm.value;
   if (login && password) {
-    postData('/register', { login, password });
+    postData('/user/set', { login, password });
   }
 });
