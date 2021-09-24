@@ -21,8 +21,13 @@ header {
   position: relative;
 }
 
-#occupied_login_warning {
+#occupied_login_warning, #empty_field_warning {
+  color: red;
+  font-size: 13px;
   position: absolute;
+  top: 245px;
+  left: 55px;
+  display: none;
 }
 
 

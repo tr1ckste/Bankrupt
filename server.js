@@ -2,7 +2,7 @@
 
 const http = require('http');
 const fs = require('fs');
-const { userController } = require('./db.controllers');
+const { userController, bankController } = require('./db.controllers');
 
 const CURRENT_USER_LOGIN = null;
 
@@ -23,15 +23,15 @@ const receiveData = async req => new Promise(resolve => {
 });
 
 http.createServer(async(req, res) => {
-  const url = req.url === '/' ? '/static/index.html' : req.url;
-  const [first, second] = url.substring(1).split('/');
+  const url = req.url === '/' ? '/static/html/index.html' : req.url;
+  const [first, second, third] = url.substring(1).split('/');
   if (url === '/register') {
     const data = await receiveData(req);
     const { login, password } = data;
     console.log(data);
     userController.setUser(login, password);
   } else {
-    const path = `./${first}/${second}`;
+    const path = `./${first}/${second}/${third}`;
     try {
       const data = await fs.promises.readFile(path);
       res.end(data);
