@@ -36,14 +36,23 @@ const handlers = {
     getAll: async (req, res) => {
 
     },
-    getAllById: async (req, res) => {
+    getById: async (req, res) => {
 
     },
-    set: async (req, res) => {
+    login: async (req, res) => {
+      
+    },
+    register: async (req, res) => {
       const data = await receiveData(req);
       const { login, password } = data;
-      console.log(data);
-      userController.setUser(login, password);
+      const userLogins = (await userController.getAllUsers()).map(user => user.login);
+      if (userLogins.includes(login)) {
+        res.end(JSON.stringify('occupied'));
+      } else {
+        console.log(data);
+        userController.setUser(login, password);
+        res.end(JSON.stringify(''));
+      }
     }
   },
 
