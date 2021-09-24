@@ -129,7 +129,7 @@ input[type=text], #length_of_loan_selector {
   width: 550px;
 }
 
-input[type=number] {
+input[type=number], input[type=password] {
   font-size: 23px;
   padding: 0 10px;
 }

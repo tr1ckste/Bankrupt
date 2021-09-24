@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/style.css">
+  <link rel="stylesheet" href="../static/registerAndLogin.css">
+  <link rel="icon" href="../img/bald.jpg" type="image/x-icon"/>
+  <title>Document</title>
+</head>
+<body>
+  <header class="flex center space-between">
+    <h1>Bankrupt</h1>
+    <div class="flex center log_reg space-around">
+      <a href="../static/index.html">Back</a>
+    </div>
+  </header>
+  <div class="register_and_login_wrapper">
+    <div class="reg_form">
+      <h2>Registration form</h2>
+      <h3>Enter your login:</h3>
+      <input type="text" size="25" id="login_form">
+      <h3>Enter your password:</h3>
+      <input type="password" size="25" id="password_form">
+      <p id="occupied_login_warning" class="warning">This login is occupied. Choose another</p>
+      <p id="empty_field_warning" class="warning">Fill in all the fields</p>
+      <input type="submit" value="Submit" id="submit">
+    </div>
+  </div>
+  <script src="../scripts/register.js"></script>
+</body>
+</html>

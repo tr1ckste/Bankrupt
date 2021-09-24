@@ -2,8 +2,9 @@
 
 const http = require('http');
 const fs = require('fs');
+const { userController } = require('./db.controllers');
 
-const users = [];
+const CURRENT_USER_LOGIN = null;
 
 const httpError = (res, status, message) => {
   res.statusCode = status;
@@ -25,9 +26,10 @@ http.createServer(async(req, res) => {
   const url = req.url === '/' ? '/static/index.html' : req.url;
   const [first, second] = url.substring(1).split('/');
   if (url === '/register') {
-    const userData = await receiveData(req);
-    users.push(userData);
-    console.log(users);
+    const data = await receiveData(req);
+    const { login, password } = data;
+    console.log(data);
+    userController.setUser(login, password);
   } else {
     const path = `./${first}/${second}`;
     try {
