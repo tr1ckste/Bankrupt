@@ -12,7 +12,7 @@ const getHandler = (layers) => {
 };
 
 http.createServer(async(req, res) => {
-  const url = req.url === '/' ? '/static/html/index.html' : req.url;
+  const url = req.url === '/' ? '/static/html/main.html' : req.url;
   const layers = url.substring(1).split('/');
   const handler = getHandler(layers);
   handler(req, res);

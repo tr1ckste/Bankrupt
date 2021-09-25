@@ -99,7 +99,7 @@ header a:hover {
   text-align: center;
 }
 
-#stick {
+.stick {
   width: 1.5px;
   background-color: lightgray;
   align-self: stretch;

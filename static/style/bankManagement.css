@@ -1,0 +1,30 @@
+.adder {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background-color: white;
+  border: 3px solid #7d64fb;
+  color: #7d64fb;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 24px;
+}
+
+.adder:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.bank_popup {
+  height: 500px;
+  width: 800px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 1px solid #7d64fb;
+  border-radius: 15px;
+  margin: auto;
+  background-color: white;
+}

@@ -1,26 +1,24 @@
-'use strict';
+let MY_LOGIN = null;
 
-const { pow } = Math;
+const postData = async (url, data) => {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+  return await response.json();
+};
 
-const priceInput = document.getElementById('price_input');
-const priceInputSlider = document.getElementById('price_slider');
-
-const bankData = {
-  name: '',
-  interestRate: null,
-  maximumLoan: null,
-  minimumDownPayment: null,
-  loanTerm: null
-}
-
-priceInput.addEventListener('change', () => {
-  const { value } = priceInput;
-  priceInputSlider.value = value;
-  console.log('inputChanged');
-});
-
-priceInputSlider.addEventListener('change', () => {
-  const { value } = priceInputSlider;
-  priceInput.value = value;
-  console.log('sliderChanged');
-});
+const getData = async url => {
+  let result;
+  fetch(url)
+    .then((response) => {
+    return response.json();
+    })
+    .then((data) => {
+      result = data;
+    });
+  return result;
+};

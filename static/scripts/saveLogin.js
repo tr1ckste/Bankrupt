@@ -1,0 +1,1 @@
+MY_LOGIN = 'user23';

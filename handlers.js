@@ -1,8 +1,6 @@
 const fs = require('fs');
 const { userController, bankController } = require('./db.controllers');
 
-const CURRENT_USER_LOGIN = null;
-
 const httpError = (res, status, message) => {
   res.statusCode = status;
   res.end(`"${message}"`);
@@ -21,26 +19,34 @@ const receiveData = async req => new Promise(resolve => {
 
 const handlers = {
   static: async (req, res) => {
-    const url = req.url === '/' ? '/static/html/index.html' : req.url;
+    const url = req.url === '/' ? '/static/html/main.html' : req.url;
     const [first, second, third] = url.substring(1).split('/');
     const path = `./${first}/${second}/${third}`;
     try {
       const data = await fs.promises.readFile(path);
       res.end(data);
     } catch (err) {
+      console.log(err);
       httpError(res, 404, 'File is not found');
     }
   },
 
   user: {
-    getAll: async (req, res) => {
-
-    },
-    getById: async (req, res) => {
-
-    },
     login: async (req, res) => {
-      
+      const data = await receiveData(req);
+      const { login, password } = data;
+      const userLogins = (await userController.getAllUsers()).map(user => user.login);
+      if (!userLogins.includes(login)) {
+        res.end(JSON.stringify('incorrect'));
+        return;
+      }
+      const truePassword = (await userController.getUserByLogin(login))[0].password;
+      if (!(truePassword === password)) {
+        res.end(JSON.stringify('incorrect'));
+        return;
+      }
+      fs.writeFileSync('./static/scripts/saveLogin.js', `MY_LOGIN = '${login}';`);
+      res.end(JSON.stringify(login));
     },
     register: async (req, res) => {
       const data = await receiveData(req);
@@ -49,7 +55,6 @@ const handlers = {
       if (userLogins.includes(login)) {
         res.end(JSON.stringify('occupied'));
       } else {
-        console.log(data);
         userController.setUser(login, password);
         res.end(JSON.stringify(''));
       }

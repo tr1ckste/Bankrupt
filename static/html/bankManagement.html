@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style/style.css">
+  <link rel="stylesheet" href="/static/style/calculatorManagementNav.css">
+  <link rel="stylesheet" href="/static/style/bankManagement.css">
+  <link rel="icon" href="/static/img/bald.jpg" type="image/x-icon"/>
+  <title>Document</title>
+</head>
+<body>
+  <header class="flex center space-between">
+    <h1>Bankrupt</h1>
+    <div class="flex center log_reg space-around">
+      <p id="my_login"></p>
+      <a href="/">Log out</a>
+    </div>
+  </header>
+  <nav>
+    <a href="/static/html/calculator.html">Calculator</a>
+    <a href="/static/html/bankManagement.html" id="active">Bank Management Page</a>
+  </nav>
+  <div class="wrapper">
+
+  </div>
+  <div class="bank_popup">
+    <div class="popup_wrapper"></div>
+  </div>
+  <button class="adder">Add new bank</button>
+  <script src="/static/scripts/index.js"></script>
+  <script src="/static/scripts/saveLogin.js"></script>
+  <script src="/static/scripts/bankManagement.js"></script>
+  <script src="/static/scripts/loggedIn.js"></script>
+</body>
+</html>

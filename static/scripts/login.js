@@ -1,25 +1,30 @@
-'use strict';
+'use strict'
 
 const loginForm = document.getElementById('login_form');
 const passwordForm = document.getElementById('password_form');
 const submitButton = document.getElementById('submit');
 
-const occupiedLoginWarning = document.getElementById('occupied_login_warning');
+const incorrectWarning = document.getElementById('incorrect_warning');
 const emptyFieldWarning = document.getElementById('empty_field_warning');
 
 const submitButtonHandler = async (login, password) => {
   if (!(login && password)) {
-    occupiedLoginWarning.style.display = 'none';
+    incorrectWarning.style.display = 'none';
     emptyFieldWarning.style.display = 'inline';
     return;
   }
-  const error = await postData('/user/register', { login, password });
-  occupiedLoginWarning.style.display = 'none';
+  const response = await postData('/user/login', { login, password });
+  console.log(response);
+  incorrectWarning.style.display = 'none';
   emptyFieldWarning.style.display = 'none';
-  if (error === 'occupied') {
-    occupiedLoginWarning.style.display = 'inline';
+  if (response === 'incorrect') {
+    incorrectWarning.style.display = 'inline';
     emptyFieldWarning.style.display = 'none';
+    return;
   }
+  MY_LOGIN = response;
+  console.log(response);
+  document.location.href = '/static/html/bankManagement.html';
 }
 
 submitButton.addEventListener('click', async () => {
