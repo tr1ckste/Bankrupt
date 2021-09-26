@@ -38,6 +38,13 @@ class BankController {
     const bank = await database.query(query);
     return bank.rows;
   }
+
+  async setBank(name, interestRate, maximumLoan, minimumDownPayment, loanTerm, clientId) {
+    const query = `INSERT INTO bank (name, interestRate, maximumLoan, minimumDownPayment, loanTerm, clientId) 
+                   VALUES ('${name}', '${interestRate}', '${maximumLoan}', '${minimumDownPayment}', '${loanTerm}', '${clientId}')`;
+    const newBank =  await database.query(query);
+    return newBank;
+  }
 }
 
 const userController = new UserController;

@@ -26,9 +26,30 @@
 
   </div>
   <div class="bank_popup">
-    <div class="popup_wrapper"></div>
+    <div id="space">
+      <img src="/static/img/cross.png" alt="cross" id="close_popup">
+    </div>
+    <div class="popup_wrapper">
+      <div class="left">
+        <img src="/static/img/bank.png" alt="bank" width="200px">
+        <h3>Bank name</h3>
+        <input type="text" id="bank_name" class="bank_input">
+        <h3>Interest rate</h3>
+        <input type="number" id="interest_rate" class="bank_input">
+      </div>
+      <div class="right">
+        <h3>Maximum loan</h3>
+        <input type="number" id="maximum_loan" class="bank_input">
+        <h3>Minimum down payment</h3>
+        <input type="number" id="minimum_down_payment" class="bank_input">
+        <h3>Loan term(in months)</h3>
+        <input type="number" id="loan_term" class="bank_input">
+        <button id="confirm_bank" class="bank_manipulation">Confirm</button>
+        <p id="hint">hint</p>
+      </div>
+    </div>
   </div>
-  <button class="adder">Add new bank</button>
+  <button class="bank_manipulation" id="adder">Add new bank</button>
   <script src="/static/scripts/index.js"></script>
   <script src="/static/scripts/saveLogin.js"></script>
   <script src="/static/scripts/bankManagement.js"></script>

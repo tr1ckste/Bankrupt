@@ -62,7 +62,13 @@ const handlers = {
   },
 
   bank: {
-
+    add: async (req, res) => {
+      const data = await receiveData(req);
+      const { login, name, interestRate, maximumLoan, minimumDownPayment, loanTerm } = data;
+      const userId = (await userController.getUserByLogin(login))[0].id;
+      bankController.setBank(name, interestRate, maximumLoan, minimumDownPayment, loanTerm, userId);
+      res.end(JSON.stringify(''));
+    }
   }
 }
 

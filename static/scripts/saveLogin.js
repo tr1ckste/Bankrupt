@@ -1,1 +1,1 @@
-MY_LOGIN = 'user23';
+MY_LOGIN = 'admin';
