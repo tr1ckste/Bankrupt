@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/static/style/style.css">
   <link rel="stylesheet" href="/static/style/calculatorManagementNav.css">
+  <link rel="stylesheet" href="/static/style/calculator.css">
   <link rel="icon" href="/static/img/bald.jpg" type="image/x-icon"/>
   <title>Document</title>
 </head>
@@ -26,41 +27,26 @@
       <img src="/static/img/house.png" alt="house schematic" width="200px">
       <div class="price_input_wrapper">
         <div class="price_input_wrapper inside" id="price_input_wrapper_row">
-          <input type="number" id="price_input" value="10000">
+          <input type="number" id="price_input" value="0" readonly="readonly">
           <div class="stick"></div>
           <p>Real estate price</p>
         </div>
       </div>
-      <input type="range" id="price_slider" min="10000" max="1000000" value="10000">
+      <input type="range" id="price_slider" min="0" value="0">
       <div class="price_input_wrapper">
         <div class="details_input_wrapper inside">
-          <p>Down Payment</p>
-          <div class="details_input">
-            <input type="number" id="details_input_field_left">
-            <input type="number" id="details_input_field_right">
-            <span class="percent_sign">%</span>
-          </div>
-        </div>
-      </div>
-      <div class="price_input_wrapper">
-        <div class="details_input_wrapper inside">
-          <p>Length of loan</p>
+          <p>Choose your bank</p>
           <div class="details_input">
             <select name="length_of_loan_selector" id="length_of_loan_selector">
-              <option value="30">30 Years</option>
-              <option value="20">20 Years</option>
-              <option value="15">15 Years</option>
-              <option value="10">10 Years</option>
             </select>
           </div>
         </div>
       </div>
       <div class="price_input_wrapper">
         <div class="details_input_wrapper inside">
-          <p>Interest rate</p>
+          <p>Down payment</p>
           <div class="details_input">
-            <input type="number">
-            <span class="percent_sign">%</span>
+            <input type="number" id="down_payment" value="0" readonly="readonly">
           </div>
         </div>
       </div>
@@ -69,11 +55,12 @@
       <img src="/static/img/calendar.png" alt="calendar" height="200px">
       <div class="price_input_wrapper">
         <div class="price_input_wrapper inside" id="price_input_wrapper_row">
-          <input type="number" id="price_input" value="10000">
+          <input type="number" id="monthly_output" readonly="readonly">
           <div class="stick"></div>
           <p>Your estimated monthly payment</p>
         </div>
       </div>
+      <button class="bank_manipulation" id="confirm">Confirm</button>
     </div>
   </div>
   <script src="/static/scripts/index.js"></script>

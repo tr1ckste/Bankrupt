@@ -78,3 +78,23 @@
   left: 60px;
   display: none;
 }
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bank {
+  display: flex;
+  justify-content: space-around;
+  border: 3px solid #7d64fb;
+  border-radius: 15px;
+  width: 900px;
+}
+
+.bank div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
