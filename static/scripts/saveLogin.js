@@ -1,1 +1,1 @@
-MY_LOGIN = 'kastet';
+MY_LOGIN = 'admin2';

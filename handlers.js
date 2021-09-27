@@ -54,9 +54,10 @@ const handlers = {
       const userLogins = (await userController.getAllUsers()).map(user => user.login);
       if (userLogins.includes(login)) {
         res.end(JSON.stringify('occupied'));
+        return;
       } else {
         userController.setUser(login, password);
-        fs.writeFileSync('./static/scripts/saveLogin.js', `MY_LOGIN = '${login}';`);
+        fs.writeFileSync('./static/scripts/saveLogin.js', `MY_LOGIN = '${login}';`);  
         res.end(JSON.stringify(login));
       }
     }

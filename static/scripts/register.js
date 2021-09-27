@@ -19,6 +19,7 @@ const submitButtonHandler = async (login, password) => {
   if (response === 'occupied') {
     occupiedLoginWarning.style.display = 'inline';
     emptyFieldWarning.style.display = 'none';
+    return;
   }
   MY_LOGIN = response;
   console.log(response);
