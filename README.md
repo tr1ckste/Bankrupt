@@ -1,7 +1,7 @@
 # Bankrupt
 mortgage calculator
 
-## Project setu instruction
+## Project setup instruction
 To run mortrage calculator you need postrgesql & nodejs
 
 1. Create database
