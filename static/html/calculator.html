@@ -32,7 +32,7 @@
           <p>Real estate price</p>
         </div>
       </div>
-      <input type="range" id="price_slider" min="0" value="0">
+      <input type="range" id="price_slider" class="slider" value="0">
       <div class="price_input_wrapper">
         <div class="details_input_wrapper inside">
           <p>Choose your bank</p>
@@ -48,6 +48,7 @@
           <div class="details_input">
             <input type="number" id="down_payment" value="0" readonly="readonly">
           </div>
+          <input type="range" id="down_payment_slider" class="slider" min="0" value="0">
         </div>
       </div>
     </div>
@@ -61,6 +62,7 @@
         </div>
       </div>
       <button class="bank_manipulation" id="confirm">Confirm</button>
+      <p id="hint">hint</p>
     </div>
   </div>
   <script src="/static/scripts/index.js"></script>

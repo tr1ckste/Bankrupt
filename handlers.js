@@ -56,7 +56,8 @@ const handlers = {
         res.end(JSON.stringify('occupied'));
       } else {
         userController.setUser(login, password);
-        res.end(JSON.stringify(''));
+        fs.writeFileSync('./static/scripts/saveLogin.js', `MY_LOGIN = '${login}';`);
+        res.end(JSON.stringify(login));
       }
     }
   },
@@ -66,16 +67,27 @@ const handlers = {
       const data = await receiveData(req);
       const { login, name, interestRate, maximumLoan, minimumDownPayment, loanTerm } = data;
       const userId = (await userController.getUserByLogin(login))[0].id;
-      bankController.setBank(name, interestRate, maximumLoan, minimumDownPayment, loanTerm, userId);
-      res.end(JSON.stringify(''));
+      const banks = await bankController.getAllBanks(userId);
+      const bankNames = banks.map(bank => bank.name);
+      if (bankNames.includes(name)) {
+        res.end(JSON.stringify('Bank name is occupied'));
+      } else {
+        bankController.setBank(name, interestRate, maximumLoan, minimumDownPayment, loanTerm, userId);
+        res.end(JSON.stringify(''));
+      }
     },
     load: async (req, res) => {
       const login = await receiveData(req);
-      console.log(login);
       const userId = (await userController.getUserByLogin(login))[0].id;
       const banks = await bankController.getAllBanks(userId);
-      console.log(banks);
       res.end(JSON.stringify(banks));
+    },
+    delete: async(req, res) => {
+      const data = await receiveData(req);
+      const { login, name } = data;
+      const userId = (await userController.getUserByLogin(login))[0].id;
+      await bankController.deleteBankByName(userId, name);
+      res.end(JSON.stringify(''));
     }
   }
 }

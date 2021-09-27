@@ -34,7 +34,7 @@ class BankController {
   }
 
   async deleteBankByName(userId, bankName) {
-    const query = `DELETE * FROM bank WHERE (clientId = '${userId}') AND (name = '${bankName}')`;
+    const query = `DELETE FROM bank WHERE (clientId = '${userId}') AND (name = '${bankName}')`;
     const bank = await database.query(query);
     return bank.rows;
   }

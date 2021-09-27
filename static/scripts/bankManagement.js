@@ -27,6 +27,14 @@ const checkInputs = inputs => {
 const createHtmlBank = (name, interestRate, maximumLoan, minimumDownPayment, loanTerm) => {
   const mainDiv = document.createElement('div');
   mainDiv.className = 'bank';
+  mainDiv.id = `bank_${name}`;
+  const cross = mainDiv.appendChild(document.createElement('img'));
+  cross.src = '/static/img/cross.png';
+  cross.className = 'close_edit close';
+  // const edit = mainDiv.appendChild(document.createElement('img'));
+  // edit.src = '/static/img/edit.png';
+  // edit.className = 'close_edit edit';
+  // edit.style.right = '30px';
   const first = mainDiv.appendChild(document.createElement('div'));
   const second = mainDiv.appendChild(document.createElement('div'));
   const third = mainDiv.appendChild(document.createElement('div'));
@@ -57,12 +65,21 @@ const createHtmlBank = (name, interestRate, maximumLoan, minimumDownPayment, loa
   return mainDiv;
 }
 
+const removeBank = async (login, name) => {
+  const resonse = await postData('/bank/delete', { login, name });
+  document.location.href = '/static/html/bankManagement.html';
+}
+
 const loadBanks = async login => {
   const banks = await postData('/bank/load', login);
   console.log(banks);
   for (const bank of banks) {
     const { name, interestrate, maximumloan, minimumdownpayment, loanterm } = bank;
     const divBank = createHtmlBank(name, interestrate, maximumloan, minimumdownpayment, loanterm);
+    divBank.querySelector('.close').addEventListener('click', async () => {
+      const answer = confirm('Are you sure?');
+      if (answer) await removeBank(MY_LOGIN, name);
+    });
     banksWrapper.appendChild(divBank);
   }
 }
@@ -94,7 +111,11 @@ confirmBank.addEventListener('click', async () => {
 
   const error = await postData('/bank/add', { login: MY_LOGIN, name, interestRate,
                                 maximumLoan, minimumDownPayment, loanTerm });
-  console.error();(error);
+  if (error) {
+    hint.innerHTML = error;
+    hint.style.display = 'inline';
+    return;
+  }
   document.location.href = '/static/html/bankManagement.html';
 });
 

@@ -12,5 +12,13 @@
   "license": "MIT",
   "dependencies": {
     "pg": "^8.7.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tr1ckste/Bankrupt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tr1ckste/Bankrupt/issues"
+  },
+  "homepage": "https://github.com/tr1ckste/Bankrupt#readme"
 }

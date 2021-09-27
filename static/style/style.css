@@ -115,7 +115,7 @@ header a:hover {
   width: 550px;
 }
 
-#price_slider {
+.slider {
   width: 550px;
   align-self: center;
 }

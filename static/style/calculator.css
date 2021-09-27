@@ -14,3 +14,15 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+.monthly {
+  position: relative;
+}
+
+#hint {
+  position: absolute;
+  color: red;
+  display: none;
+  top: 300px;
+  left: 120px;
+}

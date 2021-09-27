@@ -13,13 +13,16 @@ const submitButtonHandler = async (login, password) => {
     emptyFieldWarning.style.display = 'inline';
     return;
   }
-  const error = await postData('/user/register', { login, password });
+  const response = await postData('/user/register', { login, password });
   occupiedLoginWarning.style.display = 'none';
   emptyFieldWarning.style.display = 'none';
-  if (error === 'occupied') {
+  if (response === 'occupied') {
     occupiedLoginWarning.style.display = 'inline';
     emptyFieldWarning.style.display = 'none';
   }
+  MY_LOGIN = response;
+  console.log(response);
+  document.location.href = '/static/html/bankManagement.html';
 }
 
 submitButton.addEventListener('click', async () => {
